@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>danilo-crud</title>
+
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+	<header>
+		<nav class="menu">
+		    <div class="nav-wrapper">
+		      <a href="#" class="brand-logo">Lista de Fábricas</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a href="/form" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Fábrica</a></li>
+		      </ul>
+		    </div>
+		</nav>
+	
+	</header>
+	
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Editar</th>
+				<th>Deletar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="factory : ${factories}">
+				<td><a th:href="${(#mvc.url('FC#detailsFactory').arg(0, factory.id)).build()}"><span th:text="${factory.name}"></span></a></td>
+				<td><a th:href="${(#mvc.url('FC#updateFactory').arg(0, factory.id)).build()}"><i class="material-icons left">edit</i></a></td>
+				<td><a th:href="${(#mvc.url('FC#deleteFactory').arg(0, factory.id)).build()}"><i class="material-icons left">delete</i></a></td>
+			</tr>
+		</tbody>
+	
+	</table>
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+
+</html>
